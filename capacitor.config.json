@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ProHeat",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
