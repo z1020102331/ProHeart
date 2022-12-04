@@ -1,0 +1,23 @@
+img {
+  width: 250px;
+  display: flex;
+  margin: 1% auto;
+}
+
+.container {
+  padding: 15px;
+  text-align: center;
+}
+
+ion-button {
+  --background: #ff0059;
+  --color: #ffffff; 
+  --ripple-color: #ffffff;
+}
+
+.align {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
