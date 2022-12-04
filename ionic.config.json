@@ -1,7 +1,8 @@
 {
-  "name": "myApp",
+  "name": "ProHeat",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "id": "f39a06a6"
 }
