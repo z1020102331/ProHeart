@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-title>
+      Result
+    </ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-list *ngIf=" this.check === 0 ">
+		<div class="success">
+			<h3>Success</h3>
+			<img src="./../../assets/result.png" alt="">
+      <p>Congrats You have <b><span class="color_green">Low</span></b> risk of having heart disease continue to maintain your health and do provide periodic checkups</p>
+    </div>
+  </ion-list>
+  <ion-list *ngIf=" this.check === 1 ">
+    <div class="danger">
+      <h3>Danger</h3>
+      <img src="./../../assets/result.png" alt="">
+      <p>You have <b><span class="color_red">High</span></b> risk of having heart disease visit the neasrst hospital immediately</p>
+    </div>
+  </ion-list>
+  <div *ngIf=" this.check === '' ">
+    <h1>Invalid Data</h1>
+  </div>
+  <div>
+    <br/><br/><br/><br/><br/><br/><br/>
+    <p><input type = "button" value = "Send Email" (click)="sendEmail()"></p>
+  </div>
+</ion-content>

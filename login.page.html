@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <ion-title>ProHeart Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label class="lables" position="stacked">UserName</ion-label>
+
+      <ion-input [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="lables" position="stacked">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.pass"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button   (click)="save()">login</ion-button>
+      <ion-button  routerLink="/regist">Register</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,145 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-title>
+      Current Condition
+    </ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<h3>
+		<b>Please answer the following</b>
+	</h3>
+	<ion-card>
+		<swiper #swiper [pagination]="true" [config]="config" (slideChange)="onSlideChange($event)" class="mySwiper">
+			<!-- Name & Age -->
+			<ng-template swiperSlide>
+				<div class="card">
+					<p>Enter your name</p>
+					<ion-input type="text" placeholder="Enter Name"  [(ngModel)]="Current_condition.name"  (ionChange)="get_condition($event)"  ></ion-input>
+					<p>Enter your Age (years)</p>
+					<ion-input type="number" placeholder="44" [(ngModel)]="Current_condition.age" (ionChange)="get_condition($event)" ></ion-input>
+					<p>Enter your Sex</p>
+					<ion-radio-group  [(ngModel)]="Current_condition.sex" (ionChange)="get_condition($event)">
+						<ion-item>
+							<ion-label>Male</ion-label>
+							<ion-radio slot="end" color="primary" value="M"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>Female</ion-label>
+							<ion-radio slot="end" color="primary" value="F"></ion-radio>
+						</ion-item>
+					</ion-radio-group>
+				</div>
+			</ng-template>
+			<ng-template swiperSlide>
+				<div class="card">
+					<p>What type of pain do you have in your chest? (TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic)</p>
+					<ion-radio-group [(ngModel)]="Current_condition.chest_pain_type" (ionChange)="get_condition($event)">
+						<ion-item>
+							<ion-label>ASY</ion-label>
+							<ion-radio slot="end" color="primary" value="ASY"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>ATA</ion-label>
+							<ion-radio slot="end" color="primary" value="ATA"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>NAP</ion-label>
+							<ion-radio slot="end" color="primary" value="NAP"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>TA</ion-label>
+							<ion-radio slot="end" color="primary" value="TA"></ion-radio>
+						</ion-item>
+					</ion-radio-group>
+					<!-- Resting BP -->
+					<p>Enter your Resting Blood Pressure (mm Hg)</p>
+					<ion-input type="number" placeholder="443" max-length="3" [(ngModel)]="Current_condition.resting_BP" (ionChange)="get_condition($event)" ></ion-input>
+					<!-- Cholesterol -->
+					<p>Enter your Cholesterol</p>
+					<ion-input type="number" placeholder="443" max-length="3" [(ngModel)]="Current_condition.cholesterol"  (ionChange)="get_condition($event)" ></ion-input>
+				</div>
+			</ng-template>
+			<!-- Fasting BS -->
+			<ng-template swiperSlide>
+				<div class="card">
+					<p>Please select True if your Fasting Blood Sugar is greater than 120mg/dl, otherwise please select False</p>
+					<ion-radio-group  [(ngModel)]="Current_condition.fasting_BS" (ionChange)="get_condition($event)">
+						<ion-item>
+							<ion-label>True</ion-label>
+							<ion-radio slot="end" color="primary" value= 1 ></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>False</ion-label>
+							<ion-radio slot="end" color="secondary" value= 0 ></ion-radio>
+						</ion-item>
+						<!-- Resting ECG -->
+					</ion-radio-group>
+					<p>Please select Resting ECG results [Normal: Normal, ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV), LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria]</p>
+					<ion-radio-group [(ngModel)]="Current_condition.resting_ECG" (ionChange)="get_condition($event)">
+						<ion-item>
+							<ion-label>Normal</ion-label>
+							<ion-radio slot="end" color="primary" value="Normal"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>LVH</ion-label>
+							<ion-radio slot="end" color="secondary" value="LVH"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>ST</ion-label>
+							<ion-radio slot="end" color="secondary" value="ST"></ion-radio>
+						</ion-item>
+						<!-- Max HR -->
+					</ion-radio-group>
+					<p>Enter value of your Maximum Heart Rate between 60 and 202</p>
+					<ion-input type="number" placeholder="443" max-length="3" [(ngModel)]="Current_condition.max_HR" (ionChange)="get_condition($event)" ></ion-input>
+				</div>
+			</ng-template>
+			<!-- Exercise Angina -->
+			<ng-template swiperSlide>
+				<div class="card">
+					<p>Do you have exercise induced angina?</p>
+					<ion-radio-group  [(ngModel)]="Current_condition.exercise_Angina" (ionChange)="get_condition($event)">
+						<ion-item>
+							<ion-label>Yes</ion-label>
+							<ion-radio slot="end" color="primary" value="Y"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>No</ion-label>
+							<ion-radio slot="end" color="secondary" value="N"></ion-radio>
+						</ion-item>
+					</ion-radio-group>
+					<!-- Old Peak -->
+					<p>Old Peak</p>
+					<ion-input type="text" placeholder="4.3" max-length="4" [(ngModel)]="Current_condition.old_Peak" (ionChange)="get_condition($event)" ></ion-input>
+					<p>Please enter slope of the peak exercise ST segment</p>
+					<ion-radio-group value="Up" [(ngModel)]="Current_condition.st_slope" (ionChange)="get_condition($event)">
+						<ion-item>
+							<ion-label>Up</ion-label>
+							<ion-radio slot="end" color="primary" value="Up"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>Flat</ion-label>
+							<ion-radio slot="end" color="secondary" value="Flat"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>Down</ion-label>
+							<ion-radio slot="end" color="secondary" value="Down"></ion-radio>
+						</ion-item>
+					</ion-radio-group>
+				</div>
+			</ng-template>
+		</swiper>
+	</ion-card>
+	<div class="nav_button">
+		<ion-button *ngIf=" this.show_prev === false "  (click)="slidePrev()" expand="block" shape="round">
+              Prev
+            </ion-button>
+		<ion-button *ngIf=" this.show_next === false " (click)="slideNext()" [disabled]=" this.allow ===  true "  expand="block" shape="round">
+              Next
+            </ion-button>
+		<ion-button *ngIf=" this.show_next === true "  (click)="result()" [disabled]=" this.allow ===  true " expand="block" shape="round">
+              Get Result
+            </ion-button>
+	</div>
+</ion-content>
